@@ -1,0 +1,13 @@
+export * from './is-array'
+export * from './is-intersection'
+export * from './is-iterable'
+export * from './is-keyed'
+export * from './is-object'
+export * from './is-optional'
+export * from './is-promise'
+export * from './is-record'
+
+export * from './is-shape'
+export * from './is-tuple'
+export * from './is-union'
+export * from './is-unknown'
