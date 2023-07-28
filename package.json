@@ -2,7 +2,10 @@
     "name": "@benzed/types",
     "description": "Utility types, type guards and assertions.",
     "main": "./lib",
-    "version": "1.0.0",
+    "version": "1.0.1",
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
         "update": "npx npm-check -u",
         "test": "jest --run-in-band --coverage --all",
@@ -14,14 +17,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/BenZed/util.git"
+        "url": "git+https://github.com/BenZed/types.git"
     },
     "author": "BenZed",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/BenZed/util/issues"
+        "url": "https://github.com/BenZed/types/issues"
     },
-    "homepage": "https://github.com/BenZed/util#readme",
+    "homepage": "https://github.com/BenZed/types#readme",
     "devDependencies": {
         "@benzed/dev": "^0.15.0",
         "@types/jest": "^29.2.0",

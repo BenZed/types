@@ -1,6 +1,9 @@
 {
 
-    "include": ["src", "dev.std.ts", "../sort/src/sortable.test.ts"],
+    "include": [
+        "src"
+    ],
+
     "exclude": [
         "src/**/*.test.ts"
     ],
