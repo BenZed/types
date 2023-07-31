@@ -46,4 +46,21 @@ describe(isShape.name, () => {
         }
         expect(isShape(shape)(input)).toBe(true)
     })
+
+    test('explicit typing', () => {
+        class Vector {
+            x = 0
+            y = 0
+        }
+
+        const isVector = isShape<Vector>({
+            x: isNumber,
+            y: isNumber
+        })
+
+        expect(isVector({ x: 0, y: 0 })).toBe(true)
+
+        const vJson = { x: 0, y: 0 }
+        if (isVector(vJson)) vJson satisfies Vector
+    })
 })

@@ -1,4 +1,4 @@
-import { TypeGuard, TypeOf } from './func'
+import { TypeGuard, TypeOf } from './guards'
 import {
     isArrayOf,
     isIntersection,

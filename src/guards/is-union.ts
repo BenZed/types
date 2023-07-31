@@ -1,4 +1,4 @@
-import { AnyTypeGuard, TypeGuard, TypesOf } from '../func'
+import { AnyTypeGuard, TypeGuard, TypesOf } from './is-func'
 
 export const isUnion =
     <T extends AnyTypeGuard[]>(...types: T): TypeGuard<TypesOf<T>[number]> =>

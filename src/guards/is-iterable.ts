@@ -1,4 +1,4 @@
-import { Func, isFunc } from '../func'
+import { Func, isFunc } from './is-func'
 import { isString } from '../primitive'
 import { isObject } from './is-object'
 

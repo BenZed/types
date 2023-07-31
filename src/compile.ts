@@ -1,4 +1,4 @@
-import { Func } from './func'
+import { Func } from './is-func'
 
 /**
  * Get a compiled contract of a given type.

@@ -1,4 +1,4 @@
-import { TypeGuard } from '../func'
+import { TypeGuard } from './is-func'
 import { isNumber, isString } from '../primitive'
 import { isRecord } from './is-record'
 

@@ -1,4 +1,4 @@
-import { AnyTypeGuard, TypeGuard, TypesOf } from '../func'
+import { AnyTypeGuard, TypeGuard, TypesOf } from './is-func'
 import { Intersect } from '../merge'
 
 //// Exports ////
