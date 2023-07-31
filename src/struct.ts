@@ -27,7 +27,10 @@ function isStruct(c: Class | AbstractClass): boolean {
  *
  * In this way, structs achieve type
  */
-function struct<I extends Struct>(Struct: I, context: ClassDecoratorContext) {
+function struct<I extends Struct | AbstractStruct>(
+    Struct: I,
+    context: ClassDecoratorContext
+) {
     // Validation
     context.addInitializer(() => {
         if (context.kind !== 'class')
