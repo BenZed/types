@@ -1,4 +1,4 @@
-import { isFunc } from './func'
+import { isFunc } from './is-func'
 import { test, expect } from '@jest/globals'
 
 test('isFunc()', () => {

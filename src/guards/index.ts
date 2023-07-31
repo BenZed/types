@@ -1,3 +1,5 @@
+export * from './is-func'
+
 export * from './is-array'
 export * from './is-intersection'
 export * from './is-iterable'

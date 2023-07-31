@@ -1,4 +1,4 @@
-import { TypeGuard } from '../func'
+import { TypeGuard } from './is-func'
 import { nil } from '../nil'
 
 export const isOptional =

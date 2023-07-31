@@ -1,4 +1,4 @@
-import { TypeGuard } from '../func'
+import { TypeGuard } from './is-func'
 import { isGenericObject } from '../generic'
 
 //// Main ////

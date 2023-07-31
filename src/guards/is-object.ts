@@ -1,4 +1,4 @@
-import { isFunc } from '../func'
+import { isFunc } from './is-func'
 
 export const isObject = <T extends object = object>(
     input: unknown

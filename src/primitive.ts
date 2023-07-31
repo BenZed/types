@@ -1,4 +1,4 @@
-import { TypeGuard } from './func'
+import { TypeGuard } from './guards'
 import { isNil } from './nil'
 
 //// Basic ////
