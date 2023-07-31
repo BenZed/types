@@ -2,6 +2,15 @@
     @typescript-eslint/no-explicit-any,
 */
 
+export type AbstractClass<
+    A extends any[] = any[],
+    I extends object = object
+> = abstract new (...args: A) => I
+
+export type Class<A extends any[] = any[], I extends object = object> = new (
+    ...args: A
+) => I
+
 export type TypeGuard<O extends I, I = unknown> = (input: I) => input is O
 export type AnyTypeGuard = TypeGuard<any, any>
 
