@@ -1,4 +1,4 @@
-import { TypeGuard, TypeOf } from './is-func'
+import { TypeGuard, TypeOf, isFunc } from './is-func'
 import { Infer } from '../infer'
 import { isObject } from './is-object'
 
@@ -10,6 +10,7 @@ import { isObject } from './is-object'
 //// Types ////
 
 export type ShapeGuards = Record<string | symbol, TypeGuard<unknown>>
+
 export type ShapeGuardTypes<T extends ShapeGuards> = Infer<
     {
         [K in keyof T]: TypeOf<T[K]>
@@ -31,10 +32,15 @@ export function isShape<T extends ShapeGuards>(
 ): TypeGuard<ShapeGuardTypes<T>>
 
 export function isShape(shape: object) {
+    const keys = [
+        ...Object.getOwnPropertyNames(shape),
+        ...Object.getOwnPropertySymbols(shape)
+    ].filter(k => isFunc(shape[k as keyof typeof shape]))
+
     return (input: unknown) => {
         if (!isObject(input)) return false
 
-        for (const key in shape) {
+        for (const key of keys) {
             if (!(shape as any)[key](input[key as keyof typeof input]))
                 return false
         }

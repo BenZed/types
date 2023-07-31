@@ -63,4 +63,16 @@ describe(isShape.name, () => {
         const vJson = { x: 0, y: 0 }
         if (isVector(vJson)) vJson satisfies Vector
     })
+
+    test('catches symbols in shapes', () => {
+        const key = Symbol('key')
+
+        const hasSymbolicKey = isShape({
+            name: isString,
+            [key]: isNumber
+        })
+
+        expect(hasSymbolicKey({ [key]: 0, name: 'zero' })).toBe(true)
+        expect(hasSymbolicKey({ name: 'one' })).toBe(false)
+    })
 })
