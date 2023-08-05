@@ -2,12 +2,12 @@ import { isFunc, Class, AbstractClass } from './guards'
 
 //// Types ////
 
-interface StructStatic {
+interface StaticTypeGuard {
     is(input: unknown): input is object
 }
 
-type Struct = Class & StructStatic
-type AbstractStruct = AbstractClass & StructStatic
+type Struct = Class & StaticTypeGuard
+type AbstractStruct = AbstractClass & StaticTypeGuard
 
 //// Helper ////
 
@@ -56,4 +56,4 @@ function struct<I extends Struct | AbstractStruct>(
 
 //// Exports ////
 
-export { struct, isStruct, StructStatic }
+export { struct, isStruct, StaticTypeGuard, Struct, AbstractStruct }
