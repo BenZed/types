@@ -3,11 +3,11 @@
 */
 
 export type AbstractClass<
-    A extends any[] = any[],
-    I extends object = object
+    I extends object = object,
+    A extends any[] = any[]
 > = abstract new (...args: A) => I
 
-export type Class<A extends any[] = any[], I extends object = object> = new (
+export type Class<I extends object = object, A extends any[] = any[]> = new (
     ...args: A
 ) => I
 
@@ -43,7 +43,19 @@ type _AnyTypeMethods = _AnyTypeMethod[] | readonly _AnyTypeMethod[]
 /**
  * Any function.
  */
-export type Func = (...args: any) => any
+export type Func<A extends any[] = any, R = any> = (...args: A) => R
 
 export const isFunc = <F extends Func = Func>(i: unknown): i is F =>
     typeof i === 'function'
+
+export function isClass(i: unknown): i is Class
+export function isClass<I extends object = object, A extends any[] = any>(
+    input: unknown
+): input is Class<I, A> {
+    return (
+        isFunc(input) &&
+        !!input.prototype &&
+        !!input.name &&
+        input.name.charAt(0) === input.name.charAt(0).toUpperCase()
+    )
+}

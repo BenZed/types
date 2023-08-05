@@ -1,20 +1,41 @@
-import { isFunc, Class, AbstractClass } from './guards'
+import { isFunc, Class, AbstractClass, isObject } from './guards'
+
+//// EsLint ////
+/* eslint-disable 
+    @typescript-eslint/no-explicit-any,
+*/
 
 //// Types ////
 
-interface StaticTypeGuard {
-    is(input: unknown): input is object
+interface StaticTypeGuard<I extends object = object> {
+    is(input: unknown): input is I
 }
 
-type Struct = Class & StaticTypeGuard
-type AbstractStruct = AbstractClass & StaticTypeGuard
+type Struct<I extends object = object, A extends any[] = any> = Class<I, A> &
+    StaticTypeGuard<I>
+
+type AbstractStruct<
+    I extends object = object,
+    A extends any[] = any
+> = AbstractClass<I, A> & StaticTypeGuard<I>
 
 //// Helper ////
 
-function isStruct(c: Class): c is Struct
-function isStruct(c: AbstractClass): c is AbstractStruct
-function isStruct(c: Class | AbstractClass): boolean {
-    return isFunc(c) && 'is' in c && isFunc(c.is)
+function isStruct(c: unknown): c is Struct
+function isStruct<I extends object = object, A extends any[] = any>(
+    c: Class<I, A>
+): c is Struct<I, A>
+function isStruct<I extends object = object, A extends any[] = any>(
+    c: AbstractClass<I, A>
+): c is AbstractStruct<I, A>
+function isStruct(c: unknown): boolean {
+    return isFunc(c) && hasStaticTypeGuard(c)
+}
+
+function hasStaticTypeGuard<I extends object = object>(
+    i: unknown
+): i is StaticTypeGuard<I> {
+    return isObject(i) && 'is' in i && isFunc(i.is)
 }
 
 //// Decorator ////
@@ -56,4 +77,11 @@ function struct<I extends Struct | AbstractStruct>(
 
 //// Exports ////
 
-export { struct, isStruct, StaticTypeGuard, Struct, AbstractStruct }
+export {
+    struct,
+    isStruct,
+    Struct,
+    AbstractStruct,
+    StaticTypeGuard,
+    hasStaticTypeGuard
+}

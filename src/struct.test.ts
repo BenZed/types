@@ -1,6 +1,6 @@
-import { isNumber, isShape } from '.'
+import { isNumber, isShape, isString } from '.'
 
-import { struct } from './struct'
+import { hasStaticTypeGuard, isStruct, struct } from './struct'
 
 import { test, expect, describe } from '@jest/globals'
 
@@ -34,4 +34,20 @@ test('decorated classes must have is method', () => {
         class NotAStruct {}
         void NotAStruct
     }).toThrow('require a static type guard')
+})
+
+test(isStruct.name, () => {
+    class Foo {}
+    expect(isStruct(Vector)).toBe(true)
+    expect(isStruct(Foo)).toBe(false)
+})
+
+test(hasStaticTypeGuard.name, () => {
+    class Bar {}
+
+    const obj = { is: isShape({ boo: isString }) }
+
+    expect(hasStaticTypeGuard(Vector)).toBe(true)
+    expect(hasStaticTypeGuard(Bar)).toBe(false)
+    expect(hasStaticTypeGuard(obj)).toBe(true)
 })
