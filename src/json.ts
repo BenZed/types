@@ -3,7 +3,7 @@ import {
     isArrayOf,
     isIntersection,
     isRecordOf,
-    isShape,
+    isShapeOf,
     isUnion
 } from './guards'
 import { Infer } from './infer'
@@ -47,6 +47,6 @@ export const isJson: (input: unknown) => input is Json = isUnion(
 export const isJsonShape = <T extends JsonShapeInput>(
     shape: T
 ): TypeGuard<JsonShapeOutput<T>> =>
-    isIntersection(isJsonRecord, isShape(shape)) as TypeGuard<
+    isIntersection(isJsonRecord, isShapeOf(shape)) as TypeGuard<
         JsonShapeOutput<T>
     >

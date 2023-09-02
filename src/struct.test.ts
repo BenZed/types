@@ -1,4 +1,4 @@
-import { isNumber, isShape, isString } from '.'
+import { isNumber, isShapeOf, isString } from '.'
 
 import { hasStaticTypeGuard, isStruct, struct } from './struct'
 
@@ -8,7 +8,7 @@ import { test, expect, describe } from '@jest/globals'
 
 @struct
 class Vector {
-    static readonly is = isShape<Vector>({
+    static readonly is = isShapeOf<Vector>({
         x: isNumber,
         y: isNumber
     })
@@ -45,7 +45,7 @@ test(isStruct.name, () => {
 test(hasStaticTypeGuard.name, () => {
     class Bar {}
 
-    const obj = { is: isShape({ boo: isString }) }
+    const obj = { is: isShapeOf({ boo: isString }) }
 
     expect(hasStaticTypeGuard(Vector)).toBe(true)
     expect(hasStaticTypeGuard(Bar)).toBe(false)

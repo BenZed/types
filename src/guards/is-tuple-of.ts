@@ -14,15 +14,15 @@ export type TupleGuardsForType<T extends readonly unknown[]> = T extends [
 
 //// Main ////
 
-export function isTuple<T extends TypeGuards>(
+export function isTupleOf<T extends TypeGuards>(
     ...types: T
 ): TypeGuard<TypesOf<T>>
 
-export function isTuple<T extends readonly unknown[]>(
+export function isTupleOf<T extends readonly unknown[]>(
     ...types: TupleGuardsForType<T>
 ): TypeGuard<T>
 
-export function isTuple(...types: Func[]) {
+export function isTupleOf(...types: Func[]) {
     return (input: unknown) =>
         isArray(input) &&
         input.length === types.length &&

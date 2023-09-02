@@ -1,16 +1,16 @@
-import { isArrayOf, isShape, isTuple } from '.'
+import { isArrayOf, isShapeOf, isTupleOf } from '.'
 
 import { isNumber, isString } from '../primitive'
 
 import { test, expect, describe } from '@jest/globals'
 
-describe(isTuple.name, () => {
+describe(isTupleOf.name, () => {
     type MyTuple = [string, number, { foo: string; bar: number }[]]
 
-    const isMyTuple = isTuple(
+    const isMyTuple = isTupleOf(
         isString,
         isNumber,
-        isArrayOf(isShape({ foo: isString, bar: isNumber }))
+        isArrayOf(isShapeOf({ foo: isString, bar: isNumber }))
     )
 
     test('should return true for a valid tuple', () => {
@@ -27,7 +27,7 @@ describe(isTuple.name, () => {
     test('explicit type', () => {
         type Range = [number, number]
 
-        const isRange = isTuple<Range>(isNumber, isNumber)
+        const isRange = isTupleOf<Range>(isNumber, isNumber)
         expect(isRange([1, 1])).toBe(true)
     })
 })

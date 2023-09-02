@@ -3,14 +3,14 @@ import { isIntersection } from './is-intersection'
 import { isNumber, isString } from '../primitive'
 
 import { test, expect, describe } from '@jest/globals'
-import { isShape } from './is-shape'
+import { isShapeOf } from './is-shape-of'
 import { isRecord } from './is-record'
 
 describe(isIntersection.name, () => {
     test('returns true if the input satisfies all type guards in the intersection', () => {
-        const guard1 = isShape({ a: isNumber })
-        const guard2 = isShape({ b: isString })
-        const guard3 = isShape({ c: isRecord })
+        const guard1 = isShapeOf({ a: isNumber })
+        const guard2 = isShapeOf({ b: isString })
+        const guard3 = isShapeOf({ c: isRecord })
 
         const input = {
             a: 42,
@@ -22,9 +22,9 @@ describe(isIntersection.name, () => {
     })
 
     test('returns false if the input does not satisfy one of the type guards in the intersection', () => {
-        const guard1 = isShape({ a: isNumber })
-        const guard2 = isShape({ b: isString })
-        const guard3 = isShape({ c: isRecord })
+        const guard1 = isShapeOf({ a: isNumber })
+        const guard2 = isShapeOf({ b: isString })
+        const guard3 = isShapeOf({ c: isRecord })
 
         const input = {
             a: 42,

@@ -24,14 +24,14 @@ export type ShapeGuardsForType<T extends object> = {
 
 //// Main ////
 
-export function isShape<T extends object>(
+export function isShapeOf<T extends object>(
     shape: ShapeGuardsForType<T>
 ): TypeGuard<T>
-export function isShape<T extends ShapeGuards>(
+export function isShapeOf<T extends ShapeGuards>(
     shape: object
 ): TypeGuard<ShapeGuardTypes<T>>
 
-export function isShape(shape: object) {
+export function isShapeOf(shape: object) {
     const keys = [
         ...Object.getOwnPropertyNames(shape),
         ...Object.getOwnPropertySymbols(shape)

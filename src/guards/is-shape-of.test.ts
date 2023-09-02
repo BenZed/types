@@ -1,10 +1,10 @@
-import { isArrayOf, isShape } from '.'
+import { isArrayOf, isShapeOf } from '.'
 
 import { isNumber, isString } from '../primitive'
 
 import { test, it, expect, describe } from '@jest/globals'
 
-describe(isShape.name, () => {
+describe(isShapeOf.name, () => {
     it('should pass if the input object matches the expected shape', () => {
         const testObject = {
             name: 'John Doe',
@@ -12,7 +12,7 @@ describe(isShape.name, () => {
             email: 'johndoe@example.com'
         }
 
-        const testTypeGuard = isShape({
+        const testTypeGuard = isShapeOf({
             name: isString,
             age: isNumber,
             email: isString
@@ -28,7 +28,7 @@ describe(isShape.name, () => {
             email: 12345
         }
 
-        const testTypeGuard = isShape({
+        const testTypeGuard = isShapeOf({
             name: isString,
             age: isNumber,
             email: isString
@@ -44,7 +44,7 @@ describe(isShape.name, () => {
             age: isNumber,
             hobbies: isArrayOf(isString)
         }
-        expect(isShape(shape)(input)).toBe(true)
+        expect(isShapeOf(shape)(input)).toBe(true)
     })
 
     test('explicit typing', () => {
@@ -53,7 +53,7 @@ describe(isShape.name, () => {
             y = 0
         }
 
-        const isVector = isShape<Vector>({
+        const isVector = isShapeOf<Vector>({
             x: isNumber,
             y: isNumber
         })
@@ -67,7 +67,7 @@ describe(isShape.name, () => {
     test('catches symbols in shapes', () => {
         const key = Symbol('key')
 
-        const hasSymbolicKey = isShape({
+        const hasSymbolicKey = isShapeOf({
             name: isString,
             [key]: isNumber
         })
