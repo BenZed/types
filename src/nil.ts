@@ -6,6 +6,7 @@ import { isNaN } from './primitive'
 
 /**
  * Alias for `undefined`
+ *
  */
 export type nil = undefined
 

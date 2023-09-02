@@ -1,4 +1,4 @@
-import { isUnion } from './guards/is-union'
+import { isUnionOf } from './guards/is-union-of'
 import { isEqual } from './primitive'
 
 //// EsLint ////
@@ -16,7 +16,7 @@ export const isGenericObject = (i: unknown): i is GenericObject =>
 
 //// Helper ////
 
-const isGenericPrototype = isUnion(
+const isGenericPrototype = isUnionOf(
     isEqual(null),
     isEqual(Object.prototype as any)
 )
