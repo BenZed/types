@@ -7,18 +7,15 @@ import {
     isUnion
 } from './guards'
 import { Infer } from './infer'
-import { nil } from './nil'
 import { isBoolean, isEqual, isNumber, isString } from './primitive'
 
 //// Types ////
 
 export type JsonPrimitive = null | string | number | boolean
 
-export type JsonRecord =
-    | { [k: string]: Json | nil }
-    | { readonly [k: string]: Json | nil }
+export type JsonRecord = { [k: string]: Json }
 
-export type JsonArray = Json[] | readonly Json[]
+export type JsonArray = Json[]
 
 export type Json = JsonPrimitive | JsonArray | JsonRecord
 

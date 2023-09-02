@@ -65,18 +65,17 @@ type Combine<T> = T extends infer O
     : T
 
 /**
- * Merge an arbitrary number of types into one.
+ * Assign properties to one target object to an
  */
-export type Merge<T extends readonly object[]> = Intersect<T> extends (
+export type Assign<T extends readonly object[]> = Intersect<T> extends (
     ...args: infer A
 ) => infer R
     ? ((...args: A) => R) & Combine<Intersect<T>>
     : Combine<Intersect<T>>
 
 /**
- * Merge an arbitrary number of objects into one.
+ * Assign the properties of an arbitrary number of objects to the first object
  */
-export const merge: <A extends readonly object[]>(...objects: A) => Merge<A> =
-    Object.assign
-
-export { merge as assign }
+export const assign = Object.assign as <T extends readonly object[]>(
+    ...objects: T
+) => Assign<T>

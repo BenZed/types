@@ -24,50 +24,50 @@ describe('falsy', () => {
         undefined satisfies Falsy
     })
 
-    it('isFalsy()', () => {
+    it(isFalsy, () => {
         if (isFalsy(value)) value satisfies Falsy
     })
 })
 
 describe('Truthy', () => {
-    it('isTruthy()', () => {
+    it(isTruthy, () => {
         if (isTruthy(value)) value satisfies Truthy
     })
 })
 
 describe('Primitive', () => {
-    it('isPrimitive', () => {
+    it(isPrimitive, () => {
         for (const primitive of [null, undefined, 'string', 1000, true])
             expect(isPrimitive(primitive)).toEqual(true)
     })
 })
 
-it('isString()', () => {
+it(isString, () => {
     expect(isString('string')).toBe(true)
     if (isString(value)) value satisfies string
 })
 
-it('isNumber()', () => {
+it(isNumber, () => {
     expect(isNumber(100)).toBe(true)
     if (isNumber(value)) value satisfies number
 })
 
-it('isBoolean()', () => {
+it(isBoolean, () => {
     expect(isBoolean(true)).toBe(true)
     if (isBoolean(value)) value satisfies boolean
 })
 
-it('isBigInt()', () => {
+it(isBigInt, () => {
     expect(isBigInt(BigInt(10))).toBe(true)
     if (isBigInt(value)) value satisfies bigint
 })
 
-it('isSymbol()', () => {
+it(isSymbol, () => {
     expect(isSymbol(Symbol())).toBe(true)
     if (isSymbol(value)) value satisfies symbol
 })
 
-describe('isString', () => {
+describe(isString, () => {
     it('should return true for string inputs', () => {
         expect(isString('hello')).toBe(true)
         expect(isString('world')).toBe(true)
@@ -83,7 +83,7 @@ describe('isString', () => {
     })
 })
 
-describe('isNumber', () => {
+describe(isNumber, () => {
     it('should return true for number inputs', () => {
         expect(isNumber(123)).toBe(true)
         expect(isNumber(0)).toBe(true)
@@ -103,7 +103,7 @@ describe('isNumber', () => {
     })
 })
 
-describe('isBoolean', () => {
+describe(isBoolean, () => {
     it('should return true for boolean inputs', () => {
         expect(isBoolean(true)).toBe(true)
         expect(isBoolean(false)).toBe(true)
@@ -118,7 +118,7 @@ describe('isBoolean', () => {
     })
 })
 
-describe('isBigInt', () => {
+describe(isBigInt, () => {
     it('should return true for bigint inputs', () => {
         expect(isBigInt(BigInt(123))).toBe(true)
         expect(isBigInt(BigInt('12345678901234567890'))).toBe(true)
@@ -133,7 +133,7 @@ describe('isBigInt', () => {
     })
 })
 
-describe('isPrimitive', () => {
+describe(isPrimitive, () => {
     it('should return true for primitive inputs', () => {
         expect(isPrimitive(true)).toBe(true)
         expect(isPrimitive(123)).toBe(true)
@@ -155,7 +155,7 @@ describe('isPrimitive', () => {
     })
 })
 
-describe('isFinite', () => {
+describe(isFinite, () => {
     it('should return true for finite numbers', () => {
         expect(isFinite(1)).toBe(true)
         expect(isFinite(-1)).toBe(true)

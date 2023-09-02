@@ -1,4 +1,4 @@
-import { isKeyed } from '.'
+import { isKeyed } from './is-keyed'
 
 import { it, expect, describe } from '@jest/globals'
 
@@ -18,6 +18,14 @@ describe(isKeyed.name, () => {
             color: 'white'
         }
         expect(isKeyed('make', 'model', 'year', 'color')(car)).toBe(true)
+    })
+
+    it('works on symbols', () => {
+        const $$key = Symbol('key')
+
+        const obj = { [$$key]: undefined }
+
+        expect(isKeyed($$key)(obj)).toBe(true)
     })
 
     it('should return false when the object is missing one or more keys', () => {

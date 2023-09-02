@@ -27,7 +27,6 @@ export function omit<T extends object, Tk extends (keyof T)[]>(
 export function omit<T extends object, Tk extends (keyof T)[]>(
     ...keys: Tk
 ): (input: T) => Omit<T, Tk[number]>
-export function omit(input: object, ...keys: (symbol | string)[]): object
 export function omit(...input: unknown[]): unknown {
     return isObject(input[0])
         ? _omit(...(input as [object, ...(symbol | string)[]]))

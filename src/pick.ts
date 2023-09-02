@@ -19,7 +19,6 @@ export function pick<T extends object, Tk extends (keyof T)[]>(
 export function pick<T extends object, Tk extends (keyof T)[]>(
     ...keys: Tk
 ): (input: T) => Pick<T, Tk[number]>
-export function pick(input: object, ...keys: (string | symbol)[]): object
 export function pick(...input: unknown[]): unknown {
     if (isObject(input[0]))
         return _pick(...(input as unknown as [object, ...(keyof object)[]]))
